@@ -1,0 +1,4 @@
+- insert:
+    - id: settings-resizer
+      name: 'dsh-settings-resizer'
+      config: {}

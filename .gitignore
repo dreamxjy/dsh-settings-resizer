@@ -1,0 +1,7 @@
+# Local-install artifact only: this symlink points at the local DSH profile
+# and must never be committed. When the plugin is installed into a profile,
+# Node resolves @deepseek-ai/schemastery from the profile's node_modules.
+node_modules/
+
+.DS_Store
+*.log
