@@ -73,7 +73,13 @@
 
 ## 安装
 
-从 GitHub 源码安装（推荐，依赖会自动解析）：
+用预构建的 release tarball 安装（推荐，体积最小、无需构建）：
+
+```sh
+dsh plugin --profile <name> add "https://github.com/dreamxjy/dsh-settings-resizer/releases/download/v1.2.3/dsh-settings-resizer-1.2.3.tgz"
+```
+
+也可以从 GitHub 源码安装（依赖会自动解析）：
 
 ```sh
 dsh plugin --profile <name> add github:dreamxjy/dsh-settings-resizer
