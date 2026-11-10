@@ -76,7 +76,7 @@
 用预构建的 release tarball 安装（推荐，体积最小、无需构建）：
 
 ```sh
-dsh plugin --profile <name> add "https://github.com/dreamxjy/dsh-settings-resizer/releases/download/v1.2.3/dsh-settings-resizer-1.2.3.tgz"
+dsh plugin --profile <name> add "https://github.com/dreamxjy/dsh-settings-resizer/releases/download/v1.2.4/dsh-settings-resizer-1.2.4.tgz"
 ```
 
 也可以从 GitHub 源码安装（依赖会自动解析）：
