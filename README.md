@@ -63,13 +63,23 @@
   `--dsw-alias-bg-l1` / `bg-l2`（本版未定义），避免在两种主题下都看不清。
 - 仅在 `@media (min-width: 768px)` 生效，移动端铺满视口的原有逻辑保持不变。
 - 若未来宿主不再带 `data-shortcut-modal="settings"`，CSS 自然失效且无害。
-- 本插件以本地目录（symlink）安装，Node ESM 按 realpath 解析，因此目录内
-  `node_modules/@deepseek-ai` 链接到 profile 的 `@deepseek-ai` 作用域，
-  让 Host 能解析 `@deepseek-ai/schemastery`。
+- Host `index.js` 用 `@deepseek-ai/schemastery` 声明 `Config`，该依赖已在
+  `package.json` 的 `dependencies` 中固定为 `3.18.4`。从 GitHub 源码安装
+  （`dsh plugin --profile <name> add github:dreamxjy/dsh-settings-resizer`）时，
+  pnpm 会把这个依赖装进插件自己的 `node_modules`，Host 即可解析。
+- 只有用 `link:`（本地目录软链）方式安装时，Node ESM 按 realpath 解析会
+  绕过 profile 的 `node_modules` 树，才需要目录内的 `node_modules/@deepseek-ai`
+  软链（见下）。
 
 ## 安装
 
-通过 `plugin_manager` 的 `install_bundle` 安装本目录（绝对路径）。
+从 GitHub 源码安装（推荐，依赖会自动解析）：
+
+```sh
+dsh plugin --profile <name> add github:dreamxjy/dsh-settings-resizer
+```
+
+或通过 `plugin_manager` 的 `install_bundle` 安装本目录（绝对路径）。
 安装/更新后可能需要完全重启 DeepSeek Harness 才会加载新的 Host 模块。
 
 > 从本仓库全新 clone 后，若以 `link:`（本地目录软链）方式安装，Node ESM 会按
