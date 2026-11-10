@@ -1,6 +1,6 @@
 {
   "name": "dsh-settings-resizer",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "private": true,
   "type": "module",
   "description": "Make the Harness settings window resizable and configurable in size.",
@@ -27,7 +27,9 @@
     "@deepseek-ai/schemastery": "3.18.4"
   },
   "dsh": {
-    "bundle": { "patch": "./cordis.patch.yml" },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
     "client": {
       "platform": "web",
       "immediately": true,
