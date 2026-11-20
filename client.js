@@ -109,7 +109,12 @@ window.__ModuleLoader__.load({
 .dshr-badge{font-size:10px;line-height:1.4;border-radius:999px;padding:1px 6px;background:var(--dsw-alias-interactive-bg-hover);color:var(--dshr-accent)}
 .dshr-custom{display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px}
 .dshr-field{display:flex;flex-direction:column}
-.dshr-input{width:96px;font:inherit;font-size:13px;color:var(--dsw-alias-label-primary);background:var(--dshr-control);border:1px solid var(--dshr-line);border-radius:var(--dsw-radius-sm,6px);padding:6px 8px;outline:none}
+/* The action cell mirrors the label/control/unit rows of a field so the
+   button lands on the same baseline as the inputs instead of sinking to
+   the bottom of the "px" caption. */
+.dshr-field-action>.dshr-label-sm,.dshr-field-action>.dshr-unit{visibility:hidden}
+.dshr-field-action>.dshr-btn{height:34px;display:inline-flex;align-items:center;justify-content:center;padding:0 16px;line-height:1}
+.dshr-input{width:96px;height:34px;font:inherit;font-size:13px;color:var(--dsw-alias-label-primary);background:var(--dshr-control);border:1px solid var(--dshr-line);border-radius:var(--dsw-radius-sm,6px);padding:6px 8px;outline:none}
 .dshr-input:focus{border-color:var(--dshr-accent)}
 .dshr-unit{font-size:11px;color:var(--dsw-alias-label-tertiary);margin-top:3px}
 .dshr-btn{font:inherit;font-size:12px;border:1px solid var(--dshr-line);background:var(--dshr-control);color:var(--dsw-alias-label-primary);border-radius:var(--dsw-radius-sm,6px);padding:7px 14px;cursor:pointer}
@@ -372,9 +377,13 @@ window.__ModuleLoader__.load({
                 }),
                 h('span', { className: 'dshr-unit' }, t('pixels'))
               ),
-              h('button', {
-                type: 'button', className: 'dshr-btn dshr-btn-primary', onClick: onApply
-              }, t('apply'))
+              h('div', { className: 'dshr-field dshr-field-action' },
+                h('span', { className: 'dshr-label-sm', 'aria-hidden': 'true' }, t('width')),
+                h('button', {
+                  type: 'button', className: 'dshr-btn dshr-btn-primary', onClick: onApply
+                }, t('apply')),
+                h('span', { className: 'dshr-unit', 'aria-hidden': 'true' }, t('pixels'))
+              )
             ),
             err ? h('p', { className: 'dshr-error' }, err)
                 : h('p', { className: 'dshr-hint' }, t('customHint'))
